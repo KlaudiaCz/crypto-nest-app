@@ -4,7 +4,7 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <Link to="/" className="logo" aria-label="CryptoNest home">
-        <img src="/public/logo.png" alt="" />
+        <img src="/logo.png" alt="" />
         <h1>
           <span>Crypto</span>Nest
         </h1>
