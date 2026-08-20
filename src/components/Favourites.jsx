@@ -20,11 +20,11 @@ const Favourites = ({ coins, onToggleFavorite, showViewMore = true }) => {
             onToggleFavorite={onToggleFavorite}
           />
         ))}
-      {showViewMore && coins.length >= 3 && (
-        <Link className="view-more-link" to="/favorites">
-          View more
-        </Link>
-      )}
+        {showViewMore && coins.length > 3 && (
+          <Link className="view-more-link" to="/favorites">
+            View more
+          </Link>
+        )}
       </div>
     </section>
   );

@@ -57,32 +57,32 @@ const CoinChart = ({ coinId }) => {
 
   if (loading) return <p>Loading chart...</p>; // Wyświetl komunikat podczas ładowania danych
   return (
-    <div style={{ marginTop: "30px" }}>
+    <div className="coin-chart">
       <Line
         data={chartData}
         options={{
           responsive: true,
           plugins: {
             legend: { display: false },
-            tooltip: { mode: "index", intersect: false},
+            tooltip: { mode: "index", intersect: false },
           },
           scales: {
             x: {
-                type: 'time',
-                time: {
-                    unit: 'day',
-                },
-                ticks: {
-                    autoSkip: true,
-                    maxTicksLimit: 7,
-                }
+              type: "time",
+              time: {
+                unit: "day",
+              },
+              ticks: {
+                autoSkip: true,
+                maxTicksLimit: 7,
+              },
             },
             y: {
-                ticks: {
-                    callback: (value) => `$${value.toLocaleString()}`, // Formatowanie osi Y jako dolarów
-                }
-            }
-          }
+              ticks: {
+                callback: (value) => `$${value.toLocaleString()}`, // Formatowanie osi Y jako dolarów
+              },
+            },
+          },
         }}
       />{" "}
       {/* Renderujemy wykres liniowy z danymi z chartData */}
