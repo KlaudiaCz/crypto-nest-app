@@ -3,6 +3,7 @@ import LimitSelector from "../components/LimitSelector";
 import FilterInput from "../components/FilterInput";
 import SortSelector from "../components/SortSelector";
 import Spinner from "../components/Spinner";
+import Header from "../components/Header";
 
 const HomePage = ({
   coins,
@@ -45,7 +46,7 @@ const HomePage = ({
     });
   return (
     <div>
-
+      <Header />
       {loading && <Spinner />}{" "}
       {/* wyświetl komunikat o ładowaniu, jeśli dane są w trakcie pobierania */}
       {error && <div className="error">{error}</div>}{" "}

@@ -1,20 +1,29 @@
-import { Link } from "react-router";
-
 const Header = () => {
   return (
-    <div className="navbar">
-      <div className="title">
-        <img src="/public/logo.png" /> {/* logo aplikacji */}
-        <h1>
-          <span>Crypto</span>Nest
-        </h1>
+    <header className="site-header">
+      <div className="header-copy">
+        <p className="header-eyebrow">MARKET OVERVIEW</p>
+        <h2>Follow the market at a glance.</h2>
+        <p>
+          Track the most important crypto signals before you explore the
+          details.
+        </p>
       </div>
-      <div className="top-nav">
-        <Link to="/">Home</Link>
-        <Link to="/about">About</Link>
-        <Link to="/favorites">Favorites</Link>
+      <div className="market-strip" aria-label="Crypto market status">
+        <span className="market-chip">
+          <strong>BTC</strong>
+          <small>LIVE</small>
+        </span>
+        <span className="market-chip">
+          <strong>ETH</strong>
+          <small>LIVE</small>
+        </span>
+        <span className="market-chip">
+          <strong>SOL</strong>
+          <small>LIVE</small>
+        </span>
       </div>
-    </div>
+    </header>
   );
 };
 

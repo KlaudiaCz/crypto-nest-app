@@ -144,17 +144,132 @@ span {
   font-size: 1rem;
 }
 
+.site-header {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2.5rem;
+  min-height: 190px;
+  padding: 2.25rem 2.5rem;
+  margin-bottom: 3rem;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  border-radius: 20px;
+  background:
+    linear-gradient(120deg, rgba(31, 41, 55, 0.82), rgba(16, 24, 39, 0.62)),
+    repeating-linear-gradient(
+      135deg,
+      transparent 0,
+      transparent 34px,
+      rgba(249, 250, 251, 0.025) 35px,
+      transparent 36px
+    );
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.24),
+    inset 0 1px rgba(249, 250, 251, 0.08);
+  backdrop-filter: blur(12px);
+}
+
+.header-copy {
+  max-width: 560px;
+}
+
+.header-eyebrow {
+  margin-bottom: 0.35rem;
+  color: #f59e0b;
+  font-size: 0.7rem;
+  font-weight: bold;
+  letter-spacing: 0.12em;
+}
+
+.header-copy h2 {
+  margin-bottom: 0.35rem;
+  font-size: clamp(1.6rem, 4vw, 2.8rem);
+  line-height: 1.15;
+}
+
+.header-copy p:last-child {
+  color: #9ca3af;
+  font-size: 1rem;
+}
+
+.site-header::after {
+  position: absolute;
+  right: 7%;
+  bottom: -42px;
+  width: 180px;
+  height: 90px;
+  border: 1px solid rgba(245, 158, 11, 0.18);
+  border-radius: 50%;
+  content: "";
+  transform: rotate(-12deg);
+  z-index: -1;
+}
+
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 2rem;
+  min-height: 44px;
+  margin-bottom: 1rem;
+  padding: 0 0.5rem;
 }
 
-.title {
+.logo {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.logo img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.logo h1 {
+  font-size: 1.35rem;
+  letter-spacing: 0;
+}
+
+.market-strip {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: auto;
+}
+
+.market-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.45rem 0.75rem;
+  border: 1px solid rgba(249, 250, 251, 0.12);
+  border-radius: 999px;
+  color: #d1d5db;
+  font-size: 0.78rem;
+}
+
+.market-chip::before {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #4caf50;
+  content: "";
+}
+
+.market-chip strong {
+  color: #f9fafb;
+  font-size: 0.72rem;
+}
+
+.market-chip small {
+  color: #9ca3af;
+  font-size: 0.58rem;
+  letter-spacing: 0.04em;
 }
 
 /* Top Nav */
@@ -162,11 +277,11 @@ span {
   display: flex;
   justify-content: flex-end;
   gap: 1rem;
-  margin-bottom: 1rem;
 }
 
 .top-nav a {
   color: #f59e0b;
+  font-size: 1rem;
   text-decoration: none;
   font-weight: bold;
   transition: text-decoration 0.2s ease;
@@ -174,6 +289,33 @@ span {
 
 .top-nav a:hover {
   text-decoration: underline;
+}
+
+@media (max-width: 700px) {
+  .navbar {
+    gap: 1rem;
+  }
+
+  .site-header {
+    min-height: 220px;
+    padding: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .market-strip {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+    margin-left: 0;
+  }
+
+  .top-nav {
+    margin-left: auto;
+  }
+
+  .header-copy {
+    max-width: 100%;
+  }
 }
 
 /* About Page */

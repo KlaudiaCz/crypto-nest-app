@@ -3,7 +3,7 @@ import HomePage from "./pages/home";
 import AboutPage from "./pages/about";
 import CoinDetailsPage from "./pages/coin-details";
 import NotFoundPage from "./pages/not-found";
-import Header from "./components/Header";
+import Navbar from "./components/Navbar";
 import { Route, Routes } from "react-router";
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -37,7 +37,7 @@ const App = () => {
 
   return (
     <>
-      <Header />
+      <Navbar />
       <Routes>
         <Route
           path="/"
