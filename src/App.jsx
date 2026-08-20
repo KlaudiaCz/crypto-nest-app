@@ -16,7 +16,11 @@ const App = () => {
   const [limit, setLimit] = useState("");
   const [filter, setFilter] = useState("");
   const [sortBy, setSortBy] = useState("");
-  const [favoriteIds, setFavoriteIds] = useState([]);
+  const [favoriteIds, setFavoriteIds] = useState(() => {
+    const savedFavorites = localStorage.getItem("favoriteCoins");
+
+    return savedFavorites ? JSON.parse(savedFavorites) : [];
+  });
 
   const toggleFavorite = (coinId) => {
     setFavoriteIds((previousIds) =>
@@ -25,6 +29,10 @@ const App = () => {
         : [...previousIds, coinId],
     );
   };
+
+  useEffect(() => {
+    localStorage.setItem("favoriteCoins", JSON.stringify(favoriteIds));
+  }, [favoriteIds]);
 
   useEffect(() => {
     const fetchCoins = async () => {
