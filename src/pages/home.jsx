@@ -45,8 +45,8 @@ const HomePage = ({
     });
   return (
     <div>
-      <h1>🚀 Crypto Dash</h1>
-      {loading && <Spinner />}{" "} 
+
+      {loading && <Spinner />}{" "}
       {/* wyświetl komunikat o ładowaniu, jeśli dane są w trakcie pobierania */}
       {error && <div className="error">{error}</div>}{" "}
       {/* wyświetl komunikat o błędzie, jeśli wystąpił */}

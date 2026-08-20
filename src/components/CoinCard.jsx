@@ -1,6 +1,11 @@
+import { useState } from "react";
+import { Star, StarCheck, StarPlus, StarMinus } from "lucide-react";
 import { Link } from "react-router";
 
 const CoinCard = ({ coin }) => {
+  const [isFavorite, setIsFavorite] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+
   const priceChange = coin.price_change_percentage_24h;
   const priceChangeText =
     priceChange !== null && priceChange !== undefined
@@ -12,24 +17,40 @@ const CoinCard = ({ coin }) => {
         ? "positive"
         : "negative"
       : "neutral";
+  const FavoriteIcon = isFavorite
+    ? isHovered
+      ? StarMinus
+      : Star
+    : isHovered
+      ? StarPlus
+      : Star;
 
   return (
-    // Link do szczegółów monety, przekazując ID monety w URL
-    <Link to={`/coin/${coin.id}`}>
-      {/* Karta monety z podstawowymi informacjami i stylizacją w zależności od zmiany ceny */}
     <div className="coin-card">
-      <div className="coin-header">
-        <img src={coin.image} alt={coin.name} className="coin-image" />
-        <div>
-          <h2>{coin.name}</h2>
-          <p className="symbol">{coin.symbol?.toUpperCase()}</p>
+      <button
+        type="button"
+        className="favorite-btn"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        onClick={() => setIsFavorite((previousValue) => !previousValue)}
+        title={isFavorite ? "Remove from favorites" : "Add to favorites"}
+      >
+        <FavoriteIcon size={24} fill={isFavorite ? "#f59e0b" : "none"} stroke={isFavorite ? "#F59E0B" : "currentColor"}/>
+      </button>
+
+      <Link to={`/coin/${coin.id}`}>
+        <div className="coin-header">
+          <img src={coin.image} alt={coin.name} className="coin-image" />
+          <div>
+            <h2>{coin.name}</h2>
+            <p className="symbol">{coin.symbol?.toUpperCase()}</p>
+          </div>
         </div>
-      </div>
-      <p>Price: ${coin.current_price?.toLocaleString()}</p>
-      <p className={priceChangeClass}>{priceChangeText}</p>
-      <p>Market Cap: {coin.market_cap?.toLocaleString()}</p>
+        <p>Price: ${coin.current_price?.toLocaleString()}</p>
+        <p className={priceChangeClass}>{priceChangeText}</p>
+        <p>Market Cap: {coin.market_cap?.toLocaleString()}</p>
+      </Link>
     </div>
-    </Link>
   );
 };
 

@@ -6,21 +6,24 @@
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #0e1117;
-  color: #f0f0f0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #101827;
+  color: #f9fafb;
   line-height: 1.6;
   padding: 2rem;
 }
 
 h1 {
-  margin-bottom: 2rem;
   font-size: 2rem;
 }
 
 a {
-  color: #fff;
+  color: #f9fafb;
   text-decoration: none;
+}
+
+span {
+  color: #f59e0b;
 }
 
 .grid {
@@ -30,15 +33,36 @@ a {
 }
 
 .coin-card {
-  background-color: #161b22;
+  position: relative;
+  background-color: #1f2937;
   padding: 1.5rem;
   border-radius: 12px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  transition: transform 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    outline 0.2s ease;
 }
 
 .coin-card:hover {
-  transform: translateY(-5px);
+  transform: scale(1.03);
+  border: 1px solid #f59e0b;
+  position: relative;
+  z-index: 1;
+}
+
+.favorite-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #f9fafb;
+  transition: color 0.2s ease;
+}
+
+.favorite-btn:hover {
+  color: #f59e0b;
 }
 
 .coin-header {
@@ -100,7 +124,7 @@ a {
 .controls select {
   padding: 0.5rem 1rem;
   border-radius: 8px;
-  background: #1c1f26;
+  background: #1f2937;
   color: white;
   border: none;
 }
@@ -115,9 +139,22 @@ a {
   padding: 0.75rem;
   border-radius: 8px;
   border: none;
-  background: #1c1f26;
+  background: #1f2937;
   color: #fff;
   font-size: 1rem;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
 /* Top Nav */
@@ -129,14 +166,14 @@ a {
 }
 
 .top-nav a {
-  color: #58a6ff;
+  color: #f59e0b;
   text-decoration: none;
   font-weight: bold;
-  transition: color 0.2s ease;
+  transition: text-decoration 0.2s ease;
 }
 
 .top-nav a:hover {
-  color: #4090db;
+  text-decoration: underline;
 }
 
 /* About Page */

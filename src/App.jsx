@@ -11,9 +11,9 @@ const App = () => {
   const [coins, setCoins] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [limit, setLimit] = useState(10);
+  const [limit, setLimit] = useState("");
   const [filter, setFilter] = useState("");
-  const [sortBy, setSortBy] = useState("market_cap_desc");
+  const [sortBy, setSortBy] = useState("");
 
   useEffect(() => {
     const fetchCoins = async () => {
@@ -56,7 +56,8 @@ const App = () => {
           }
         />
         <Route path="/about" element={<AboutPage />} />
-        <Route path="/coin/:id" element={<CoinDetailsPage />} /> {/* Dodajemy trasę dla szczegółów monety */}
+        <Route path="/coin/:id" element={<CoinDetailsPage />} />{" "}
+        {/* Dodajemy trasę dla szczegółów monety */}
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </>
