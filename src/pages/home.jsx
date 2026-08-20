@@ -4,6 +4,7 @@ import FilterInput from "../components/FilterInput";
 import SortSelector from "../components/SortSelector";
 import Spinner from "../components/Spinner";
 import Header from "../components/Header";
+import Favourites from "../components/Favourites";
 
 const HomePage = ({
   coins,
@@ -15,6 +16,8 @@ const HomePage = ({
   setSortBy,
   loading,
   error,
+  favoriteIds,
+  toggleFavorite,
 }) => {
   const filteredCoins = coins
     .filter((coin) => {
@@ -29,7 +32,7 @@ const HomePage = ({
     .sort((a, b) => {
       switch (sortBy) {
         case "market_cap_desc":
-          return b.marked_cap - a.market_cap; // sortuj malejąco po kapitalizacji rynkowej
+          return b.market_cap - a.market_cap; // sortuj malejąco po kapitalizacji rynkowej
         case "market_cap_asc":
           return a.market_cap - b.market_cap; // sortuj rosnąco po kapitalizacji rynkowej
         case "price_desc":
@@ -44,9 +47,13 @@ const HomePage = ({
           return 0; // jeśli nie ma dopasowania, nie zmieniaj kolejności
       }
     });
+
+  const favoriteCoins = coins.filter((coin) => favoriteIds.includes(coin.id));
   return (
     <div>
       <Header />
+      <Favourites coins={favoriteCoins} onToggleFavorite={toggleFavorite} />
+      <h1 className="search-title">Search</h1>
       {loading && <Spinner />}{" "}
       {/* wyświetl komunikat o ładowaniu, jeśli dane są w trakcie pobierania */}
       {error && <div className="error">{error}</div>}{" "}
@@ -65,6 +72,8 @@ const HomePage = ({
               <CoinCard
                 key={coin.id} // unikalny klucz dla każdego elementu listy, używając id monety
                 coin={coin} // przekazanie danych o monecie jako props do komponentu CoinCard
+                isFavorite={favoriteIds.includes(coin.id)}
+                onToggleFavorite={toggleFavorite}
               />
             ))
           ) : (

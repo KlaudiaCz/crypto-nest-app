@@ -2,8 +2,7 @@ import { useState } from "react";
 import { Star, StarCheck, StarPlus, StarMinus } from "lucide-react";
 import { Link } from "react-router";
 
-const CoinCard = ({ coin }) => {
-  const [isFavorite, setIsFavorite] = useState(false);
+const CoinCard = ({ coin, isFavorite, onToggleFavorite }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   const priceChange = coin.price_change_percentage_24h;
@@ -20,7 +19,7 @@ const CoinCard = ({ coin }) => {
   const FavoriteIcon = isFavorite
     ? isHovered
       ? StarMinus
-      : Star
+      : StarCheck
     : isHovered
       ? StarPlus
       : Star;
@@ -32,10 +31,14 @@ const CoinCard = ({ coin }) => {
         className="favorite-btn"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
-        onClick={() => setIsFavorite((previousValue) => !previousValue)}
+        onClick={() => onToggleFavorite(coin.id)}
         title={isFavorite ? "Remove from favorites" : "Add to favorites"}
       >
-        <FavoriteIcon size={24} fill={isFavorite ? "#f59e0b" : "none"} stroke={isFavorite ? "#F59E0B" : "currentColor"}/>
+        <FavoriteIcon
+          size={24}
+          fill={isFavorite ? "#f59e0b" : "none"}
+          stroke={isFavorite ? "#F59E0B" : "currentColor"}
+        />
       </button>
 
       <Link to={`/coin/${coin.id}`}>
